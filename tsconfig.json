@@ -10,8 +10,14 @@
     "forceConsistentCasingInFileNames": true,
     "module": "es6",
     "target": "es5",
-    "jsx": "react"
+    "jsx": "react",
+    "types": ["cypress"]
   },
+  "include": [
+    "src/*.ts",
+    "test/*.ts",
+    "cypress/*/*.ts"
+  ],
   "exclude": [
     ".vscode",
     "dist",

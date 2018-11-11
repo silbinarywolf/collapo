@@ -15,9 +15,19 @@
   },
   "scripts": {
     "start": "webpack-dev-server --open --config webpack.config.js",
-    "build": "webpack --config webpack.config.js --mode=\"production\""
+    "build": "webpack --config webpack.config.js --mode=\"production\"",
+    "cypress:run": "cypress run",
+    "cypress:open": "cypress open",
+    "tslint": "tslint --project ./tsconfig.json"
   },
   "devDependencies": {
+    "@cypress/webpack-preprocessor": "^4.0.0",
+    "css-loader": "^1.0.1",
+    "cypress": "^3.1.1",
+    "node-sass": "^4.10.0",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
     "ts-loader": "^5.3.0",
     "typescript": "^3.1.6",
     "webpack": "^4.25.1",
