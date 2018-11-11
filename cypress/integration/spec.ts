@@ -1,4 +1,5 @@
 import { Collapo } from "collapo/Collapo"
+//import { styles } from "collapo/CollapoStyles"
 import styles from "collapo/Collapo.scss"
 
 console.warn('spec', styles);
@@ -32,16 +33,40 @@ function getTemplate(props: Props) {
 	return r;
 }
 
+// NOTE: Jake: 2018-11-11
+// Hoist stylesheets from this document into the
+// working/testing area document.
+const stylesheets: string[] = [];
+if (document.head) {
+	document.head.querySelectorAll('link').forEach(function(stylesheet) {
+		if (stylesheet.href) {
+			stylesheets.push(stylesheet.href);
+		}
+	})
+}
+function setupStylesheets(head: HTMLHeadElement | null) {
+	if (head) {
+		for (let stylesheet of stylesheets) {
+			const link = document.createElement("link");
+			link.type = "text/css";
+			link.rel = "stylesheet";
+			link.href = stylesheet;
+			head.appendChild(link);
+		}
+	}
+}
+
 describe('TypeScript', () => {
 	it('works', () => {
 		cy.document().then((doc) => {
-			console.warn('styles', styles, styles.button, Collapo);
+			setupStylesheets(doc.head)
+
+			// Setup template
 			doc.body.innerHTML = getTemplate({
 				id: "collapseExample",
 				buttonClass: styles['button'],
 				containerClass: "Collapo__container",
 			})
-
 			new Collapo(doc.body.querySelector('button'))
 
 			// note TypeScript definition
