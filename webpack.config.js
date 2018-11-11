@@ -1,5 +1,8 @@
 const path = require('path');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+// todo: Jake: 2018-11-11
+// Hook this up to PostCSS when its installed
 const browsersSupported = [
   '>1%',
   'last 4 versions',
@@ -11,8 +14,14 @@ module.exports = {
 	mode: "production",
 	entry: {
 		'collapo': './src/Collapo.ts',
-		'test': './test/test.ts'
+		//'test': './test/test.ts'
 	},
+	plugins: [
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+            chunkFilename: "[id].css"
+        })
+    ],
 	module: {
 		rules: [
 			{
@@ -20,22 +29,26 @@ module.exports = {
 			  use: [
 				require.resolve('style-loader'),
 				{
+		          loader: MiniCssExtractPlugin.loader,
+		        },
+				{
 				  loader: require.resolve('css-loader'),
 				  options: {
 					importLoaders: 1,
 					modules: true,
-					localIdentName: '[name]__[local]__[hash:base64:5]'
+					localIdentName: '[name]__[local]',
 				  },
 				},
-				{
+				// todo: Jake: 2018-11-11
+				// Install this so -webkit-* prefixes get generated for IE/old iOS
+				/*{
 				  loader: require.resolve('postcss-loader'),
 				  options: {
 					// Necessary for external CSS imports to work
 					// https://github.com/facebookincubator/create-react-app/issues/2677
 					ident: 'postcss',
-					plugins: () => [],
 				  },
-				},
+				},*/
 				{ 
 				  loader: require.resolve('sass-loader'),
 				  options: {
@@ -58,7 +71,10 @@ module.exports = {
 			'.tsx', 
 			'.ts',
 			'.js'
-		]
+		],
+		alias: {
+            collapo: path.resolve(__dirname, 'src'),
+        },
 	},
 	output: {
 		filename: '[name].js',

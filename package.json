@@ -9,6 +9,8 @@
     "collapsable",
     "accordion"
   ],
+  "types": "dist/types/aurelia-validation.d.ts",
+  "typings": "dist/types/aurelia-validation.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/silbinarywolf/collapo"
@@ -21,9 +23,10 @@
     "tslint": "tslint --project ./tsconfig.json"
   },
   "devDependencies": {
-    "@cypress/webpack-preprocessor": "^4.0.0",
+    "@cypress/webpack-preprocessor": "https://github.com/silbinarywolf/cypress-webpack-preprocessor#fix_remove-babel-loader-requirement",
     "css-loader": "^1.0.1",
     "cypress": "^3.1.1",
+    "mini-css-extract-plugin": "^0.4.4",
     "node-sass": "^4.10.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",

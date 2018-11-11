@@ -3,12 +3,14 @@ interface Styles {
 }
 
 export class Collapo {
-	constructor(buttonEl: Element | null, styles: Styles) {
+	constructor(buttonEl: Element | null, styles?: Styles) {
 		if (!buttonEl) {
 			throw new Error('null is invalid');
 		}
-		console.warn('styles', styles);
-		buttonEl.classList.add(styles.button)
+		if (styles) {
+			console.warn('styles', styles);
+			buttonEl.classList.add(styles.button)
+		}
 		buttonEl.innerHTML = "~~~~~~~~~~~~~test~~~~~~~~~~~~~~~"
 	}	
 }

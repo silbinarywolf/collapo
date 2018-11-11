@@ -1,4 +1,9 @@
-import * as styles from "../src/Collapo.scss"
-import { Collapo } from "../src/Collapo"
+import { Collapo } from "collapo/Collapo"
+import * as styles from "collapo/Collapo.scss"
 
-new Collapo(document.querySelector('.js-collapo'), styles);
+if (Collapo) {
+	
+}
+if (styles) {
+
+}

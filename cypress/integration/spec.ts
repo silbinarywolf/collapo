@@ -1,24 +1,47 @@
+import { Collapo } from "collapo/Collapo"
+import * as styles from "collapo/Collapo.scss"
+
+//const styles = {
+//	"button": "Collapo__button",
+//}
+
+interface Template {
+	id: string
+	buttonClass: string
+	containerClass: string
+}
+
+function getTemplate(options: Template) {
+	const r = `
+		<button
+			type="button"
+			class="${options.buttonClass}" 
+			aria-expanded="false"
+			aria-controls="${options.id}"
+		>
+		  Title #1
+		</button>
+		<div
+			id="${options.id}"
+			class="${options.containerClass}"
+		>
+			Content in an accordion here
+		</div>
+	`
+	return r;
+}
+
 describe('TypeScript', () => {
   it('works', () => {
   	cy.visit("http://localhost:8080/test")
   	cy.document().then((doc) => {
-  		const id = "collapseExample"
-    	doc.body.innerHTML = `
-    		<button
-    			type="button"
-    			class="btn btn-primary" 
-    			aria-expanded="false"
-    			aria-controls="${id}"
-    		>
-				  Title #1
-				</button>
-				<div
-					id="${id}"
-					class="collapse"
-				>
-					Content in an accordion here
-				</div>
-    	`
+    	doc.body.innerHTML = getTemplate({
+    		id: "collapseExample",
+    		buttonClass: styles['button'],
+    		containerClass: "Collapo__container",
+    	})
+
+    	new Collapo(doc.body.querySelector('.btn'))
 
     	// note TypeScript definition
 	    let x: number = 42

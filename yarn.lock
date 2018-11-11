@@ -11,9 +11,9 @@
     date-fns "^1.27.2"
     figures "^1.7.0"
 
-"@cypress/webpack-preprocessor@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@cypress/webpack-preprocessor/-/webpack-preprocessor-4.0.0.tgz#a3e5a32034512eff074af4557633e0fce6473e8e"
+"@cypress/webpack-preprocessor@https://github.com/silbinarywolf/cypress-webpack-preprocessor#fix_remove-babel-loader-requirement":
+  version "0.0.0-development"
+  resolved "https://github.com/silbinarywolf/cypress-webpack-preprocessor#287261447e43a1d8c9d1a4fbb0e39fd54bd60b2b"
   dependencies:
     bluebird "3.5.0"
     debug "3.1.0"
@@ -2668,6 +2668,14 @@ mime@^2.3.1:
 mimic-fn@^1.0.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/mimic-fn/-/mimic-fn-1.2.0.tgz#820c86a39334640e99516928bd03fca88057d022"
+
+mini-css-extract-plugin@^0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/mini-css-extract-plugin/-/mini-css-extract-plugin-0.4.4.tgz#c10410a004951bd3cedac1da69053940fccb625d"
+  dependencies:
+    loader-utils "^1.1.0"
+    schema-utils "^1.0.0"
+    webpack-sources "^1.1.0"
 
 minimalistic-assert@^1.0.0, minimalistic-assert@^1.0.1:
   version "1.0.1"
