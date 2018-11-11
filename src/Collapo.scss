@@ -1,4 +1,12 @@
 .button {
 	color: #fff;
-	background: red;
+	background: blue;
+}
+
+.container {
+	display: none;
+	
+	&--is-active {
+		display: block;
+	}
 }

@@ -2,7 +2,6 @@ import { Collapo } from "collapo/Collapo"
 //import { styles } from "collapo/CollapoStyles"
 import styles from "collapo/Collapo.scss"
 
-console.warn('spec', styles);
 //const styles = {
 //	"button": "Collapo__button",
 //}
@@ -13,7 +12,7 @@ interface Props {
 	containerClass: string
 }
 
-function getTemplate(props: Props) {
+function renderTemplate(props: Props) {
 	const r = `
 		<button
 			type="button"
@@ -62,19 +61,16 @@ describe('TypeScript', () => {
 			setupStylesheets(doc.head)
 
 			// Setup template
-			doc.body.innerHTML = getTemplate({
+			doc.body.innerHTML = renderTemplate({
 				id: "collapseExample",
 				buttonClass: styles['button'],
 				containerClass: "Collapo__container",
 			})
-			new Collapo(doc.body.querySelector('button'))
-
-			// note TypeScript definition
-			let x: number = 42
-			if (x) {
-				expect(x).to.equal(42)
-			}
 		})
+		cy.document().then((doc) => {
+			new Collapo(doc.querySelector('.'+styles['button']), styles as any)
+		})
+		cy.get('.'+styles['button']).click()
 	})
 
   /*it('checks shape of an object', () => {

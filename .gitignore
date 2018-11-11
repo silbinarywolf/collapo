@@ -4,3 +4,4 @@ yarn-error.log
 cypress/integration/examples
 cypress/fixtures/example.json
 .notes
+dist
