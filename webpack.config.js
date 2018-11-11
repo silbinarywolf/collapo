@@ -14,6 +14,7 @@ module.exports = {
 	mode: "production",
 	entry: {
 		'collapo': './src/Collapo.ts',
+		'styles': './src/CollapoStyles.ts',
 		//'test': './test/test.ts'
 	},
 	plugins: [
@@ -34,7 +35,11 @@ module.exports = {
 				{
 				  loader: require.resolve('css-loader'),
 				  options: {
+				  	// todo: Jake: 2018-11-11
+				  	// Change this loader to "2" if we use postcss below
+				  	// https://github.com/webpack-contrib/css-loader#options
 					importLoaders: 1,
+					sourceMap: true,
 					modules: true,
 					localIdentName: '[name]__[local]',
 				  },
@@ -52,6 +57,7 @@ module.exports = {
 				{ 
 				  loader: require.resolve('sass-loader'),
 				  options: {
+            		implementation: require('sass'),
 					includePaths: [
 						path.resolve(__dirname, 'src')
 					]

@@ -5,12 +5,9 @@ interface Styles {
 export class Collapo {
 	constructor(buttonEl: Element | null, styles?: Styles) {
 		if (!buttonEl) {
-			throw new Error('null is invalid');
+			throw new Error('Collapo: buttonEl cannot be null');
 		}
-		if (styles) {
-			console.warn('styles', styles);
-			buttonEl.classList.add(styles.button)
-		}
-		buttonEl.innerHTML = "~~~~~~~~~~~~~test~~~~~~~~~~~~~~~"
+		buttonEl.innerHTML = "~~~~~~~~~~~~~collapo initializing~~~~~~~~~~~~~~~"
+		console.warn('Collapo', styles);
 	}	
 }

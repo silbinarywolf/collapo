@@ -1,29 +1,30 @@
 import { Collapo } from "collapo/Collapo"
-import * as styles from "collapo/Collapo.scss"
+import styles from "collapo/Collapo.scss"
 
+console.warn('spec', styles);
 //const styles = {
 //	"button": "Collapo__button",
 //}
 
-interface Template {
+interface Props {
 	id: string
 	buttonClass: string
 	containerClass: string
 }
 
-function getTemplate(options: Template) {
+function getTemplate(props: Props) {
 	const r = `
 		<button
 			type="button"
-			class="${options.buttonClass}" 
+			class="${props.buttonClass}" 
 			aria-expanded="false"
-			aria-controls="${options.id}"
+			aria-controls="${props.id}"
 		>
 		  Title #1
 		</button>
 		<div
-			id="${options.id}"
-			class="${options.containerClass}"
+			id="${props.id}"
+			class="${props.containerClass}"
 		>
 			Content in an accordion here
 		</div>
@@ -32,24 +33,24 @@ function getTemplate(options: Template) {
 }
 
 describe('TypeScript', () => {
-  it('works', () => {
-  	cy.visit("http://localhost:8080/test")
-  	cy.document().then((doc) => {
-    	doc.body.innerHTML = getTemplate({
-    		id: "collapseExample",
-    		buttonClass: styles['button'],
-    		containerClass: "Collapo__container",
-    	})
+	it('works', () => {
+		cy.document().then((doc) => {
+			console.warn('styles', styles, styles.button, Collapo);
+			doc.body.innerHTML = getTemplate({
+				id: "collapseExample",
+				buttonClass: styles['button'],
+				containerClass: "Collapo__container",
+			})
 
-    	new Collapo(doc.body.querySelector('.btn'))
+			new Collapo(doc.body.querySelector('button'))
 
-    	// note TypeScript definition
-	    let x: number = 42
-	    if (x) {
-	    	expect(x).to.equal(42)
-	    }
+			// note TypeScript definition
+			let x: number = 42
+			if (x) {
+				expect(x).to.equal(42)
+			}
 		})
-  })
+	})
 
   /*it('checks shape of an object', () => {
     const object = {

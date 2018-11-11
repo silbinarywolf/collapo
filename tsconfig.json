@@ -11,6 +11,7 @@
     "removeComments": true,
     "noImplicitReturns": true,
     "strictNullChecks": true,
+    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "module": "es6",
     "target": "es5",
